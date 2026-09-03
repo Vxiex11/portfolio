@@ -1,1 +1,502 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Diego Resendiz — Security Engineer</title></head><body onload="(async()=>{try{const p=await Promise.all(['content/prefix-001.txt','content/prefix-002.txt','content/prefix-003.txt','content/prefix-004.txt','content/prefix-005.txt'].map(x=>fetch(x).then(r=>r.text())));const j=await fetch('content/app.js.b64').then(r=>r.text());const d=atob(j),s=String.fromCharCode(60,115,99,114,105,112,116,62),e=String.fromCharCode(60,47,115,99,114,105,112,116,62);const z=await fetch('content/suffix.txt').then(r=>r.text());document.open();document.write(p.join('')+s+d+e+z);document.close()}catch(e){document.body.textContent='Unable to load portfolio.'}})()"><p style="font-family:system-ui;padding:2rem">Loading portfolio…</p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Diego Resendiz — Security Engineer</title>
+<meta name="description" content="Diego Resendiz — offensive security engineer who leans purple team. Pentesting, AI red teaming, and detection engineering." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#08080e;
+    --bg-2:#0d0d16;
+    --surface:#10101b;
+    --surface-2:#14141f;
+    --line:rgba(255,255,255,.09);
+    --line-strong:rgba(255,255,255,.16);
+    --text:#e9e9f2;
+    --muted:#8c8ca0;
+    --muted-2:#5f5f72;
+    --red:#ff4560;
+    --blue:#38b6ff;
+    --violet:#a274ff;
+    --violet-hi:#c4a6ff;
+    --ok:#4ee39a;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    background-image:
+      linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px);
+    background-size:64px 64px;
+    background-position:center top;
+  }
+
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--violet);color:#0a0a10}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  section{padding:96px 0;position:relative}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);background:rgba(8,8,14,.72);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .brand{font-family:var(--mono);font-weight:700;font-size:.95rem;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+  .brand .sq{width:11px;height:11px;background:var(--violet);box-shadow:0 0 14px var(--violet);border-radius:2px}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-family:var(--mono);font-size:.82rem;color:var(--muted);transition:color .15s}
+  .nav-links a:hover{color:var(--violet-hi)}
+  .status-pill{font-family:var(--mono);font-size:.72rem;color:var(--ok);display:flex;align-items:center;gap:7px}
+  .status-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok)}
+  @media(max-width:760px){.nav-links a:not(.status-pill){display:none}}
+
+  /* HERO */
+  .hero{padding:120px 0 84px;min-height:calc(100vh - 60px);display:flex;flex-direction:column;justify-content:center}
+  .prompt-line{font-family:var(--mono);font-size:.9rem;color:var(--muted);margin-bottom:22px}
+  .prompt-line .c{color:var(--violet)}
+  .hero h1{font-size:clamp(3rem,11vw,7.6rem);line-height:.92;font-weight:700;letter-spacing:-.03em;margin-bottom:8px}
+  .hero h1 .ln2{display:block;color:var(--muted-2)}
+  .thesis{max-width:52ch;margin:30px 0 6px;font-size:clamp(1.05rem,2.4vw,1.4rem);color:#c9c9d8;line-height:1.5}
+  .thesis .red{color:var(--red)}
+  .thesis .blue{color:var(--blue)}
+  .thesis .vio{color:var(--violet-hi);font-weight:500}
+
+  .equation{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:34px 0 40px;font-family:var(--mono);font-size:.95rem}
+  .equation .tag{padding:7px 14px;border:1px solid;border-radius:3px;font-weight:500}
+  .equation .tag.r{color:var(--red);border-color:rgba(255,69,96,.4);background:rgba(255,69,96,.06)}
+  .equation .tag.b{color:var(--blue);border-color:rgba(56,182,255,.4);background:rgba(56,182,255,.06)}
+  .equation .tag.v{color:var(--violet-hi);border-color:rgba(162,116,255,.5);background:rgba(162,116,255,.1)}
+  .equation .op{color:var(--muted-2);font-size:1.1rem}
+
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{font-family:var(--mono);font-size:.85rem;font-weight:500;padding:13px 22px;border-radius:4px;border:1px solid var(--line-strong);background:var(--surface);color:var(--text);cursor:pointer;transition:border-color .15s,background .15s}
+  .btn:hover{border-color:var(--violet);background:var(--surface-2)}
+  .btn.primary{background:var(--violet);border-color:var(--violet);color:#0a0a12;font-weight:700}
+  .btn.primary:hover{background:var(--violet-hi);border-color:var(--violet-hi)}
+  .btn:focus-visible{outline:2px solid var(--violet-hi);outline-offset:2px}
+
+  /* SECTION HEADERS */
+  .sec-head{display:flex;align-items:center;gap:18px;margin-bottom:44px}
+  .sec-head h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:600;letter-spacing:-.02em;white-space:nowrap}
+  .sec-head .rule{flex:1;height:1px;background:var(--line)}
+
+  /* TERMINAL */
+  .term{border:1px solid var(--line-strong);border-radius:8px;overflow:hidden;background:linear-gradient(180deg,#0b0b13,#090910);box-shadow:0 30px 80px -50px rgba(162,116,255,.4)}
+  .term-bar{display:flex;align-items:center;gap:8px;padding:11px 16px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+  .term-bar .b{width:11px;height:11px;border-radius:50%}
+  .term-bar .b1{background:#ff5f57}.term-bar .b2{background:#febc2e}.term-bar .b3{background:#28c840}
+  .term-bar .title{font-family:var(--mono);font-size:.75rem;color:var(--muted);margin-left:8px}
+  .term-body{font-family:var(--mono);font-size:.86rem;line-height:1.75;padding:20px;height:340px;overflow-y:auto}
+  .term-body::-webkit-scrollbar{width:8px}
+  .term-body::-webkit-scrollbar-thumb{background:rgba(162,116,255,.35);border-radius:8px}
+  .term-body .out{color:#b9b9cc;white-space:pre-wrap;word-break:break-word}
+  .term-body .cmd{color:var(--text)}
+  .term-body .cmd .ps{color:var(--ok)}
+  .term-body .cmd .path{color:var(--blue)}
+  .term-body .k{color:var(--violet-hi)}
+  .term-body .r{color:var(--red)}
+  .term-body .b{color:var(--blue)}
+  .term-body .g{color:var(--ok)}
+  .term-body .dim{color:var(--muted-2)}
+  .term-input-line{display:flex;align-items:center;font-family:var(--mono);font-size:.86rem;gap:8px}
+  .term-input-line .ps{color:var(--ok)}
+  .term-input-line .path{color:var(--blue)}
+  #term-input{background:transparent;border:none;outline:none;color:var(--text);font-family:var(--mono);font-size:.86rem;flex:1;caret-color:var(--violet)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+  .chip{font-family:var(--mono);font-size:.74rem;color:var(--muted);padding:6px 12px;border:1px solid var(--line);border-radius:20px;background:var(--surface);cursor:pointer;transition:.15s}
+  .chip:hover{color:var(--violet-hi);border-color:var(--violet)}
+  .term-hint{font-family:var(--mono);font-size:.72rem;color:var(--muted-2);margin-top:12px}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:48px}
+  @media(max-width:800px){.about-grid{grid-template-columns:1fr;gap:32px}}
+  .about p{color:#c4c4d4;margin-bottom:18px;max-width:58ch}
+  .about p .em{color:var(--violet-hi);font-weight:500}
+  .about-side{border-left:1px solid var(--line);padding-left:26px}
+  .about-side .row{margin-bottom:22px}
+  .about-side .lab{font-family:var(--mono);font-size:.72rem;color:var(--muted-2);margin-bottom:5px}
+  .about-side .val{font-size:.95rem;color:var(--text)}
+  .about-side .val a{border-bottom:1px solid var(--line-strong)}
+  .about-side .val a:hover{color:var(--violet-hi)}
+
+  /* EXPERIENCE */
+  .xp{position:relative;padding-left:34px}
+  .xp::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--red),var(--violet) 55%,var(--blue))}
+  .xp-item{position:relative;margin-bottom:44px}
+  .xp-item:last-child{margin-bottom:0}
+  .xp-item .node{position:absolute;left:-33px;top:5px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:2px solid var(--violet);display:grid;place-items:center}
+  .xp-item .node::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--violet)}
+  .xp-item.cur .node{border-color:var(--red)}
+  .xp-item.cur .node::after{background:var(--red);box-shadow:0 0 12px var(--red)}
+  .xp-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+  .xp-top h3{font-size:1.2rem;font-weight:600}
+  .xp-top .dur{font-family:var(--mono);font-size:.75rem;color:var(--muted)}
+  .xp-top .badge{font-family:var(--mono);font-size:.68rem;padding:3px 9px;border-radius:20px;border:1px solid rgba(255,69,96,.4);color:var(--red);background:rgba(255,69,96,.08)}
+  .xp-org{font-family:var(--mono);font-size:.82rem;color:var(--violet-hi);margin-bottom:12px}
+  .xp-item ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+  .xp-item li{color:#bcbccc;font-size:.95rem;padding-left:20px;position:relative;max-width:66ch}
+  .xp-item li::before{content:"\2023";position:absolute;left:0;color:var(--muted-2)}
+
+  /* PROJECTS */
+  .projects{display:flex;flex-direction:column;gap:20px}
+  .proj{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;border:1px solid var(--line);border-left:3px solid var(--accent,var(--violet));border-radius:8px;padding:28px;background:var(--surface);transition:border-color .18s,background .18s}
+  .proj:hover{background:var(--surface-2);border-color:var(--line-strong);border-left-color:var(--accent,var(--violet))}
+  @media(max-width:720px){.proj{grid-template-columns:1fr;gap:16px}}
+  .proj .kind{font-family:var(--mono);font-size:.72rem;color:var(--accent,var(--violet));margin-bottom:10px;display:inline-block}
+  .proj h3{font-size:1.3rem;font-weight:600;margin-bottom:10px}
+  .proj p{color:#bcbccc;font-size:.95rem;max-width:62ch;margin-bottom:14px}
+  .proj .stack{display:flex;flex-wrap:wrap;gap:7px}
+  .proj .stack span{font-family:var(--mono);font-size:.7rem;color:var(--muted);border:1px solid var(--line);padding:4px 9px;border-radius:4px}
+  .proj .go{font-family:var(--mono);font-size:.8rem;color:var(--accent,var(--violet));white-space:nowrap;align-self:center;border:1px solid var(--line-strong);padding:10px 16px;border-radius:5px;transition:.15s}
+  .proj .go:hover{background:var(--accent,var(--violet));color:#0a0a12}
+  @media(max-width:720px){.proj .go{justify-self:start}}
+  .more-repos{margin-top:26px;font-family:var(--mono);font-size:.85rem;color:var(--muted)}
+  .more-repos a{color:var(--violet-hi);border-bottom:1px solid var(--line-strong)}
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media(max-width:760px){.skills-grid{grid-template-columns:1fr}}
+  .skill-block{border:1px solid var(--line);border-radius:8px;padding:24px;background:var(--surface);border-top:2px solid var(--tone,var(--violet))}
+  .skill-block h3{font-size:1.02rem;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+  .skill-block h3 .tick{width:8px;height:8px;border-radius:2px;background:var(--tone,var(--violet))}
+  .skill-block .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .skill-block .tags span{font-family:var(--mono);font-size:.76rem;color:#c0c0d0;background:rgba(255,255,255,.03);border:1px solid var(--line);padding:6px 11px;border-radius:5px}
+
+  /* TRACK RECORD */
+  .ach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:34px}
+  @media(max-width:800px){.ach-grid{grid-template-columns:repeat(2,1fr)}}
+  .ach{border:1px solid var(--line);border-radius:8px;padding:22px;background:var(--surface)}
+  .ach .n{font-family:var(--mono);font-size:1.7rem;font-weight:700;color:var(--violet-hi);line-height:1}
+  .ach .l{font-size:.82rem;color:var(--muted);margin-top:10px}
+  .cert-row{display:flex;flex-wrap:wrap;gap:14px}
+  .cert{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;padding:14px 18px;background:var(--surface);font-size:.9rem}
+  .cert .st{font-family:var(--mono);font-size:.68rem;padding:3px 8px;border-radius:12px}
+  .cert .st.done{color:var(--ok);background:rgba(78,227,154,.1);border:1px solid rgba(78,227,154,.3)}
+  .cert .st.wip{color:var(--blue);background:rgba(56,182,255,.1);border:1px solid rgba(56,182,255,.3)}
+
+  /* CONTACT */
+  .contact{text-align:center;padding-bottom:60px}
+  .contact h2{font-size:clamp(2rem,6vw,3.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:18px}
+  .contact p{color:var(--muted);max-width:48ch;margin:0 auto 34px}
+  .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+
+  footer{border-top:1px solid var(--line);padding:28px 0}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.76rem;color:var(--muted-2)}
+  .foot-inner a{color:var(--muted)}
+  .foot-inner a:hover{color:var(--violet-hi)}
+</style>
+</head>
+<body onload="(async()=>{try{const t=await fetch('content/app.js.b64').then(r=>r.text());const s=document.createElement('script');s.textContent=atob(t);document.body.appendChild(s)}catch(e){console.error('Portfolio script failed',e)}})()">
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand"><span class="sq"></span>diego@resendiz</a>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#work">work</a>
+      <a href="#projects">projects</a>
+      <a href="#skills">skills</a>
+      <a href="#contact">contact</a>
+      <span class="status-pill"><span class="dot"></span>open to work</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="hero">
+  <div class="wrap">
+    <div class="prompt-line"><span class="c">$</span> whoami</div>
+    <h1><span id="name-scramble">Diego Resendiz</span><span class="ln2">security engineer</span></h1>
+
+    <p class="thesis">
+      I break into systems, then build the <span class="blue">detections</span> that catch the next
+      person who tries. <span class="red">Red team</span> on one side, blue on the other.
+      <span class="vio">Purple</span> is where I actually work.
+    </p>
+
+    <div class="equation">
+      <span class="tag r">offense</span>
+      <span class="op">+</span>
+      <span class="tag b">defense</span>
+      <span class="op">=</span>
+      <span class="tag v">purple team</span>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn primary" href="#projects">See my work</a>
+      <a class="btn" href="https://github.com/Vxiex11" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="mailto:dr236178@gmail.com">Email me</a>
+    </div>
+  </div>
+</header>
+
+<!-- TERMINAL -->
+<section id="console">
+  <div class="wrap">
+    <div class="sec-head"><h2>Try the console</h2><span class="rule"></span></div>
+    <div class="term">
+      <div class="term-bar">
+        <span class="b b1"></span><span class="b b2"></span><span class="b b3"></span>
+        <span class="title">diego@resendiz — zsh</span>
+      </div>
+      <div class="term-body" id="term-body">
+        <div class="out">This one's real. Type a command and hit enter. Start with <span class="g">help</span>.
+</div>
+      </div>
+      <div style="padding:0 20px 18px" onclick="document.getElementById('term-input').focus()">
+        <div class="term-input-line">
+          <span class="ps">diego@resendiz</span><span class="path">~</span><span style="color:var(--muted)">$</span>
+          <input id="term-input" autocomplete="off" spellcheck="false" aria-label="terminal command input" />
+        </div>
+      </div>
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="term-hint">try whoami, skills, projects, ctf, or sudo</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><h2>About</h2><span class="rule"></span></div>
+    <div class="about-grid about">
+      <div>
+        <p>
+          I'm a computer systems engineering student at <span class="em">ESCOM (IPN)</span> in Mexico City,
+          finishing in 2026. Outside of class I've been doing real security work: cloud and network hardening
+          on GCP and Azure, manual web app pentesting, and lately red teaming AI agents.
+        </p>
+        <p>
+          Hacking is the part I actually enjoy. But I got tired of finding a way in, writing it up, and walking
+          away. Now when I break something, I want to write the alert that fires the next time someone tries it.
+        </p>
+        <p>
+          That's why I lean <span class="em">purple team</span> instead of pure offense. Attacking teaches me
+          where things fall apart. Defending is where that knowledge turns into something a team can actually use.
+        </p>
+      </div>
+      <div class="about-side">
+        <div class="row"><div class="lab">based in</div><div class="val">Mexico City, remote-friendly</div></div>
+        <div class="row"><div class="lab">studying</div><div class="val">B.Sc. Computer Systems Engineering<br />ESCOM–IPN, graduating 2026</div></div>
+        <div class="row"><div class="lab">works on</div><div class="val">Offensive security, detection<br />engineering, and cloud</div></div>
+        <div class="row"><div class="lab">languages</div><div class="val">Spanish (native), English (advanced)</div></div>
+        <div class="row"><div class="lab">github</div><div class="val"><a href="https://github.com/Vxiex11" target="_blank" rel="noopener">github.com/Vxiex11</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head"><h2>Experience</h2><span class="rule"></span></div>
+    <div class="xp">
+
+      <div class="xp-item cur">
+        <span class="node"></span>
+        <div class="xp-top">
+          <h3>AI Red Teamer — Autonomous Agent Security</h3>
+          <span class="dur">1 month, ongoing</span>
+          <span class="badge">current</span>
+        </div>
+        <div class="xp-org">Adversarial AI security, remote contract</div>
+        <ul>
+          <li>Test production AI agents (coding agents and assistant surfaces) for prompt injection, tool abuse, and broken trust boundaries.</li>
+          <li>Found and reported sandbox-escape issues, including cross-session data exposure and code execution through agent config hooks.</li>
+          <li>Showed agents taking destructive actions with no explicit instruction: irreversible encryption, git history rewrites, and self-publishing content.</li>
+          <li>Wrote up every finding with reproducible evidence: session IDs, full transcripts, repro prompts, and success rates.</li>
+        </ul>
+      </div>
+
+      <div class="xp-item">
+        <span class="node"></span>
+        <div class="xp-top">
+          <h3>Cloud Security Engineer</h3>
+          <span class="dur">6 months</span>
+        </div>
+        <div class="xp-org">Private R&amp;D project, infrastructure cell</div>
+        <ul>
+          <li>Stood up and hardened a GKE cluster on Google Cloud with node-pool sizing, auto-repair/upgrade, and Terraform-based IaC. Also worked in Azure.</li>
+          <li>Rebuilt the network on Cisco switching and a FortiGate firewall with VLAN segmentation and a site-to-site VPN for secure remote access to a hypervisor and its VMs.</li>
+          <li>Hardened endpoints with BIOS passwords, full-disk encryption, and VeraCrypt containers (AES-256, HMAC-SHA-512).</li>
+          <li>Set up out-of-band management on a dedicated VLAN, enforcing TLS 1.3 and SSHv2 for all admin access to production hardware.</li>
+        </ul>
+      </div>
+
+      <div class="xp-item">
+        <span class="node"></span>
+        <div class="xp-top">
+          <h3>Web Application Penetration Tester</h3>
+          <span class="dur">2 months</span>
+        </div>
+        <div class="xp-org">Private engagement</div>
+        <ul>
+          <li>Ran manual tests against the OWASP Top 10 (SQL injection and XSS) using Burp Suite to inspect and manipulate traffic.</li>
+          <li>Followed a structured methodology to find, verify, and document issues, then explained them to both technical and non-technical people.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><h2>Selected work</h2><span class="rule"></span></div>
+    <div class="projects">
+
+      <a class="proj" style="--accent:var(--red)" href="https://github.com/Vxiex11/agent-egress-canary" target="_blank" rel="noopener">
+        <div>
+          <span class="kind">AI agent security</span>
+          <h3>Agent Egress Canary</h3>
+          <p>A set of controlled, harmless web pages I built to test how AI agents handle scope and data exfiltration. Everything is faked, so there are no real secrets, which lets me reproduce agent misbehavior safely and on demand.</p>
+          <div class="stack"><span>GitHub Pages</span><span>trust boundaries</span><span>agent security</span><span>egress testing</span></div>
+        </div>
+        <span class="go">view repo</span>
+      </a>
+
+      <a class="proj" style="--accent:var(--blue)" href="https://github.com/Vxiex11/splunk-detection-engineering" target="_blank" rel="noopener">
+        <div>
+          <span class="kind">detection engineering</span>
+          <h3>Splunk Detection Engineering</h3>
+          <p>SOC-style investigations in Splunk: writing detections, correlating logs, mapping activity to MITRE ATT&amp;CK, and writing up remediation. This is the defensive half of how I work.</p>
+          <div class="stack"><span>Splunk / SPL</span><span>MITRE ATT&amp;CK</span><span>log correlation</span><span>incident response</span></div>
+        </div>
+        <span class="go">view repo</span>
+      </a>
+
+      <a class="proj" style="--accent:var(--violet)" href="https://github.com/Vxiex11/Schedules-ESCOM" target="_blank" rel="noopener">
+        <div>
+          <span class="kind">full-stack web</span>
+          <h3>Schedules ESCOM</h3>
+          <p>A full-stack web app with authentication, full CRUD, and a responsive front end. Building apps like this is what makes me better at breaking them.</p>
+          <div class="stack"><span>PHP</span><span>Node.js / Express</span><span>MySQL</span><span>HTML / CSS / JS</span></div>
+        </div>
+        <span class="go">view repo</span>
+      </a>
+
+    </div>
+    <div class="more-repos">
+      There's more on my GitHub, including <a href="https://github.com/Vxiex11/python-sec-toolkit" target="_blank" rel="noopener">python-sec-toolkit</a>
+      (security and E2E-encrypted comms scripts) and <a href="https://github.com/Vxiex11/api-credit-safety-lab" target="_blank" rel="noopener">api-credit-safety-lab</a>.
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><h2>Skills</h2><span class="rule"></span></div>
+    <div class="skills-grid">
+
+      <div class="skill-block" style="--tone:var(--red)">
+        <h3><span class="tick"></span>Offensive security</h3>
+        <div class="tags">
+          <span>Web pentest (OWASP Top 10)</span><span>SQLi</span><span>XSS</span>
+          <span>AI red teaming</span><span>Prompt injection</span><span>Reverse engineering</span>
+          <span>Applied cryptography</span><span>Burp Suite</span>
+        </div>
+      </div>
+
+      <div class="skill-block" style="--tone:var(--blue)">
+        <h3><span class="tick"></span>Defense and detection</h3>
+        <div class="tags">
+          <span>Splunk (SIEM)</span><span>Detection engineering</span><span>Log analysis</span>
+          <span>MITRE ATT&amp;CK</span><span>Incident investigation</span><span>Reporting</span>
+        </div>
+      </div>
+
+      <div class="skill-block" style="--tone:var(--violet)">
+        <h3><span class="tick"></span>Cloud and infrastructure</h3>
+        <div class="tags">
+          <span>GCP (GKE, IAM)</span><span>Microsoft Azure</span><span>Terraform (IaC)</span>
+          <span>Kubernetes</span><span>Docker</span><span>Disk/container encryption</span>
+        </div>
+      </div>
+
+      <div class="skill-block" style="--tone:var(--blue)">
+        <h3><span class="tick"></span>Networking</h3>
+        <div class="tags">
+          <span>Cisco switching</span><span>FortiGate</span><span>VLAN segmentation</span>
+          <span>Site-to-site VPN</span><span>OSPF multi-area</span><span>TCP/IP, OSI</span><span>Wireshark</span>
+        </div>
+      </div>
+
+      <div class="skill-block" style="--tone:var(--violet)">
+        <h3><span class="tick"></span>Programming</h3>
+        <div class="tags">
+          <span>C</span><span>Python</span><span>JavaScript</span><span>SQL</span>
+          <span>Node.js / Express</span><span>PHP</span><span>MySQL</span>
+        </div>
+      </div>
+
+      <div class="skill-block" style="--tone:var(--red)">
+        <h3><span class="tick"></span>Tools</h3>
+        <div class="tags">
+          <span>Kali Linux</span><span>Burp Suite</span><span>Wireshark</span>
+          <span>Splunk</span><span>Git / GitHub</span><span>VS Code</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section id="track">
+  <div class="wrap">
+    <div class="sec-head"><h2>Track record</h2><span class="rule"></span></div>
+    <div class="ach-grid">
+      <div class="ach"><div class="n">75+</div><div class="l">LeetCode problems solved in SQL, C, and JavaScript</div></div>
+      <div class="ach"><div class="n">6 mo</div><div class="l">hardening production cloud and network infrastructure</div></div>
+      <div class="ach"><div class="n">Hackdef 2026</div><div class="l">competing in reverse engineering and applied crypto</div></div>
+      <div class="ach"><div class="n">10</div><div class="l">public repositories on GitHub</div></div>
+    </div>
+    <div class="cert-row">
+      <div class="cert"><span class="st done">certified</span> Google Cybersecurity Certificate, Coursera (2025)</div>
+      <div class="cert"><span class="st wip">in progress</span> eCPPTv2</div>
+      <div class="cert"><span class="st wip">in progress</span> OWASP Top 10 deep study</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Let's talk.</h2>
+    <p>I'm looking for remote work in offensive security, SOC, or cloud security. If you need someone who can attack and defend, send me a message.</p>
+    <div class="contact-links">
+      <a class="btn primary" href="mailto:dr236178@gmail.com">dr236178@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/diego-resendiz-rios-03ab4431b" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Vxiex11" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="tel:+525536349189">+52 55 3634 9189</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>&copy; 2026 Diego Resendiz</span>
+    <a href="https://github.com/Vxiex11" target="_blank" rel="noopener">@Vxiex11</a>
+  </div>
+</footer>
+
+
+</body>
+</html>
