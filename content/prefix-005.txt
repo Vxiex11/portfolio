@@ -1,0 +1,64 @@
+an><span>FortiGate</span><span>VLAN segmentation</span>
+          <span>Site-to-site VPN</span><span>OSPF multi-area</span><span>TCP/IP, OSI</span><span>Wireshark</span>
+        </div>
+      </div>
+
+      <div class="skill-block" style="--tone:var(--violet)">
+        <h3><span class="tick"></span>Programming</h3>
+        <div class="tags">
+          <span>C</span><span>Python</span><span>JavaScript</span><span>SQL</span>
+          <span>Node.js / Express</span><span>PHP</span><span>MySQL</span>
+        </div>
+      </div>
+
+      <div class="skill-block" style="--tone:var(--red)">
+        <h3><span class="tick"></span>Tools</h3>
+        <div class="tags">
+          <span>Kali Linux</span><span>Burp Suite</span><span>Wireshark</span>
+          <span>Splunk</span><span>Git / GitHub</span><span>VS Code</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TRACK RECORD -->
+<section id="track">
+  <div class="wrap">
+    <div class="sec-head"><h2>Track record</h2><span class="rule"></span></div>
+    <div class="ach-grid">
+      <div class="ach"><div class="n">75+</div><div class="l">LeetCode problems solved in SQL, C, and JavaScript</div></div>
+      <div class="ach"><div class="n">6 mo</div><div class="l">hardening production cloud and network infrastructure</div></div>
+      <div class="ach"><div class="n">Hackdef 2026</div><div class="l">competing in reverse engineering and applied crypto</div></div>
+      <div class="ach"><div class="n">10</div><div class="l">public repositories on GitHub</div></div>
+    </div>
+    <div class="cert-row">
+      <div class="cert"><span class="st done">certified</span> Google Cybersecurity Certificate, Coursera (2025)</div>
+      <div class="cert"><span class="st wip">in progress</span> eCPPTv2</div>
+      <div class="cert"><span class="st wip">in progress</span> OWASP Top 10 deep study</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Let's talk.</h2>
+    <p>I'm looking for remote work in offensive security, SOC, or cloud security. If you need someone who can attack and defend, send me a message.</p>
+    <div class="contact-links">
+      <a class="btn primary" href="mailto:dr236178@gmail.com">dr236178@gmail.com</a>
+      <a class="btn" href="https://www.linkedin.com/in/diego-resendiz-rios-03ab4431b" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Vxiex11" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="tel:+525536349189">+52 55 3634 9189</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span>&copy; 2026 Diego Resendiz</span>
+    <a href="https://github.com/Vxiex11" target="_blank" rel="noopener">@Vxiex11</a>
+  </div>
+</footer>
+

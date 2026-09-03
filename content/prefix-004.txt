@@ -1,0 +1,117 @@
+on data exposure and code execution through agent config hooks.</li>
+          <li>Showed agents taking destructive actions with no explicit instruction: irreversible encryption, git history rewrites, and self-publishing content.</li>
+          <li>Wrote up every finding with reproducible evidence: session IDs, full transcripts, repro prompts, and success rates.</li>
+        </ul>
+      </div>
+
+      <div class="xp-item">
+        <span class="node"></span>
+        <div class="xp-top">
+          <h3>Cloud Security Engineer</h3>
+          <span class="dur">6 months</span>
+        </div>
+        <div class="xp-org">Private R&amp;D project, infrastructure cell</div>
+        <ul>
+          <li>Stood up and hardened a GKE cluster on Google Cloud with node-pool sizing, auto-repair/upgrade, and Terraform-based IaC. Also worked in Azure.</li>
+          <li>Rebuilt the network on Cisco switching and a FortiGate firewall with VLAN segmentation and a site-to-site VPN for secure remote access to a hypervisor and its VMs.</li>
+          <li>Hardened endpoints with BIOS passwords, full-disk encryption, and VeraCrypt containers (AES-256, HMAC-SHA-512).</li>
+          <li>Set up out-of-band management on a dedicated VLAN, enforcing TLS 1.3 and SSHv2 for all admin access to production hardware.</li>
+        </ul>
+      </div>
+
+      <div class="xp-item">
+        <span class="node"></span>
+        <div class="xp-top">
+          <h3>Web Application Penetration Tester</h3>
+          <span class="dur">2 months</span>
+        </div>
+        <div class="xp-org">Private engagement</div>
+        <ul>
+          <li>Ran manual tests against the OWASP Top 10 (SQL injection and XSS) using Burp Suite to inspect and manipulate traffic.</li>
+          <li>Followed a structured methodology to find, verify, and document issues, then explained them to both technical and non-technical people.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><h2>Selected work</h2><span class="rule"></span></div>
+    <div class="projects">
+
+      <a class="proj" style="--accent:var(--red)" href="https://github.com/Vxiex11/agent-egress-canary" target="_blank" rel="noopener">
+        <div>
+          <span class="kind">AI agent security</span>
+          <h3>Agent Egress Canary</h3>
+          <p>A set of controlled, harmless web pages I built to test how AI agents handle scope and data exfiltration. Everything is faked, so there are no real secrets, which lets me reproduce agent misbehavior safely and on demand.</p>
+          <div class="stack"><span>GitHub Pages</span><span>trust boundaries</span><span>agent security</span><span>egress testing</span></div>
+        </div>
+        <span class="go">view repo</span>
+      </a>
+
+      <a class="proj" style="--accent:var(--blue)" href="https://github.com/Vxiex11/splunk-detection-engineering" target="_blank" rel="noopener">
+        <div>
+          <span class="kind">detection engineering</span>
+          <h3>Splunk Detection Engineering</h3>
+          <p>SOC-style investigations in Splunk: writing detections, correlating logs, mapping activity to MITRE ATT&amp;CK, and writing up remediation. This is the defensive half of how I work.</p>
+          <div class="stack"><span>Splunk / SPL</span><span>MITRE ATT&amp;CK</span><span>log correlation</span><span>incident response</span></div>
+        </div>
+        <span class="go">view repo</span>
+      </a>
+
+      <a class="proj" style="--accent:var(--violet)" href="https://github.com/Vxiex11/Schedules-ESCOM" target="_blank" rel="noopener">
+        <div>
+          <span class="kind">full-stack web</span>
+          <h3>Schedules ESCOM</h3>
+          <p>A full-stack web app with authentication, full CRUD, and a responsive front end. Building apps like this is what makes me better at breaking them.</p>
+          <div class="stack"><span>PHP</span><span>Node.js / Express</span><span>MySQL</span><span>HTML / CSS / JS</span></div>
+        </div>
+        <span class="go">view repo</span>
+      </a>
+
+    </div>
+    <div class="more-repos">
+      There's more on my GitHub, including <a href="https://github.com/Vxiex11/python-sec-toolkit" target="_blank" rel="noopener">python-sec-toolkit</a>
+      (security and E2E-encrypted comms scripts) and <a href="https://github.com/Vxiex11/api-credit-safety-lab" target="_blank" rel="noopener">api-credit-safety-lab</a>.
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><h2>Skills</h2><span class="rule"></span></div>
+    <div class="skills-grid">
+
+      <div class="skill-block" style="--tone:var(--red)">
+        <h3><span class="tick"></span>Offensive security</h3>
+        <div class="tags">
+          <span>Web pentest (OWASP Top 10)</span><span>SQLi</span><span>XSS</span>
+          <span>AI red teaming</span><span>Prompt injection</span><span>Reverse engineering</span>
+          <span>Applied cryptography</span><span>Burp Suite</span>
+        </div>
+      </div>
+
+      <div class="skill-block" style="--tone:var(--blue)">
+        <h3><span class="tick"></span>Defense and detection</h3>
+        <div class="tags">
+          <span>Splunk (SIEM)</span><span>Detection engineering</span><span>Log analysis</span>
+          <span>MITRE ATT&amp;CK</span><span>Incident investigation</span><span>Reporting</span>
+        </div>
+      </div>
+
+      <div class="skill-block" style="--tone:var(--violet)">
+        <h3><span class="tick"></span>Cloud and infrastructure</h3>
+        <div class="tags">
+          <span>GCP (GKE, IAM)</span><span>Microsoft Azure</span><span>Terraform (IaC)</span>
+          <span>Kubernetes</span><span>Docker</span><span>Disk/container encryption</span>
+        </div>
+      </div>
+
+      <div class="skill-block" style="--tone:var(--blue)">
+        <h3><span class="tick"></span>Networking</h3>
+        <div class="tags">
+          <span>Cisco switching</sp

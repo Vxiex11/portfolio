@@ -1,0 +1,133 @@
+{font-family:var(--mono);font-size:.68rem;padding:3px 8px;border-radius:12px}
+  .cert .st.done{color:var(--ok);background:rgba(78,227,154,.1);border:1px solid rgba(78,227,154,.3)}
+  .cert .st.wip{color:var(--blue);background:rgba(56,182,255,.1);border:1px solid rgba(56,182,255,.3)}
+
+  /* CONTACT */
+  .contact{text-align:center;padding-bottom:60px}
+  .contact h2{font-size:clamp(2rem,6vw,3.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:18px}
+  .contact p{color:var(--muted);max-width:48ch;margin:0 auto 34px}
+  .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+
+  footer{border-top:1px solid var(--line);padding:28px 0}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-family:var(--mono);font-size:.76rem;color:var(--muted-2)}
+  .foot-inner a{color:var(--muted)}
+  .foot-inner a:hover{color:var(--violet-hi)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand"><span class="sq"></span>diego@resendiz</a>
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#work">work</a>
+      <a href="#projects">projects</a>
+      <a href="#skills">skills</a>
+      <a href="#contact">contact</a>
+      <span class="status-pill"><span class="dot"></span>open to work</span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header id="top" class="hero">
+  <div class="wrap">
+    <div class="prompt-line"><span class="c">$</span> whoami</div>
+    <h1><span id="name-scramble">Diego Resendiz</span><span class="ln2">security engineer</span></h1>
+
+    <p class="thesis">
+      I break into systems, then build the <span class="blue">detections</span> that catch the next
+      person who tries. <span class="red">Red team</span> on one side, blue on the other.
+      <span class="vio">Purple</span> is where I actually work.
+    </p>
+
+    <div class="equation">
+      <span class="tag r">offense</span>
+      <span class="op">+</span>
+      <span class="tag b">defense</span>
+      <span class="op">=</span>
+      <span class="tag v">purple team</span>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn primary" href="#projects">See my work</a>
+      <a class="btn" href="https://github.com/Vxiex11" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="mailto:dr236178@gmail.com">Email me</a>
+    </div>
+  </div>
+</header>
+
+<!-- TERMINAL -->
+<section id="console">
+  <div class="wrap">
+    <div class="sec-head"><h2>Try the console</h2><span class="rule"></span></div>
+    <div class="term">
+      <div class="term-bar">
+        <span class="b b1"></span><span class="b b2"></span><span class="b b3"></span>
+        <span class="title">diego@resendiz — zsh</span>
+      </div>
+      <div class="term-body" id="term-body">
+        <div class="out">This one's real. Type a command and hit enter. Start with <span class="g">help</span>.
+</div>
+      </div>
+      <div style="padding:0 20px 18px" onclick="document.getElementById('term-input').focus()">
+        <div class="term-input-line">
+          <span class="ps">diego@resendiz</span><span class="path">~</span><span style="color:var(--muted)">$</span>
+          <input id="term-input" autocomplete="off" spellcheck="false" aria-label="terminal command input" />
+        </div>
+      </div>
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="term-hint">try whoami, skills, projects, ctf, or sudo</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><h2>About</h2><span class="rule"></span></div>
+    <div class="about-grid about">
+      <div>
+        <p>
+          I'm a computer systems engineering student at <span class="em">ESCOM (IPN)</span> in Mexico City,
+          finishing in 2026. Outside of class I've been doing real security work: cloud and network hardening
+          on GCP and Azure, manual web app pentesting, and lately red teaming AI agents.
+        </p>
+        <p>
+          Hacking is the part I actually enjoy. But I got tired of finding a way in, writing it up, and walking
+          away. Now when I break something, I want to write the alert that fires the next time someone tries it.
+        </p>
+        <p>
+          That's why I lean <span class="em">purple team</span> instead of pure offense. Attacking teaches me
+          where things fall apart. Defending is where that knowledge turns into something a team can actually use.
+        </p>
+      </div>
+      <div class="about-side">
+        <div class="row"><div class="lab">based in</div><div class="val">Mexico City, remote-friendly</div></div>
+        <div class="row"><div class="lab">studying</div><div class="val">B.Sc. Computer Systems Engineering<br />ESCOM–IPN, graduating 2026</div></div>
+        <div class="row"><div class="lab">works on</div><div class="val">Offensive security, detection<br />engineering, and cloud</div></div>
+        <div class="row"><div class="lab">languages</div><div class="val">Spanish (native), English (advanced)</div></div>
+        <div class="row"><div class="lab">github</div><div class="val"><a href="https://github.com/Vxiex11" target="_blank" rel="noopener">github.com/Vxiex11</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head"><h2>Experience</h2><span class="rule"></span></div>
+    <div class="xp">
+
+      <div class="xp-item cur">
+        <span class="node"></span>
+        <div class="xp-top">
+          <h3>AI Red Teamer — Autonomous Agent Security</h3>
+          <span class="dur">1 month, ongoing</span>
+          <span class="badge">current</span>
+        </div>
+        <div class="xp-org">Adversarial AI security, remote contract</div>
+        <ul>
+          <li>Test production AI agents (coding agents and assistant surfaces) for prompt injection, tool abuse, and broken trust boundaries.</li>
+          <li>Found and reported sandbox-escape issues, including cross-sessi
